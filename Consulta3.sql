@@ -1,11 +1,11 @@
 SELECT 
-    p.nombre AS Paciente,
-    r.nombre AS Representante,
-    CASE 
-        WHEN p.representante_cedula = r.cedula THEN p.descripcion_parentesco
-        ELSE 'No tiene relacion'
-    END AS Parentesco
+P.NOMBRE AS PACIENTE,
+R.NOMBRE AS REPRESENTANTE,
+CASE 
+WHEN P.REPRESENTANTE_CEDULA = R.CEDULA THEN P.DESCRIPCION_PARENTESCO
+ELSE 'NO TIENE RELACION'
+END AS PARENTESCO
 FROM 
-    paciente p
+PACIENTE P
 LEFT JOIN 
-    representante r ON p.representante_cedula = r.cedula
+REPRESENTANTE R ON P.REPRESENTANTE_CEDULA = R.CEDULA
