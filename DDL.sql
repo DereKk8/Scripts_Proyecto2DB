@@ -105,10 +105,6 @@ CREATE TABLE reclamo (
 ALTER TABLE reclamo ADD constraint "chk pago parcial" 
     CHECK ((codigo_razon_pago_parcial IS NULL AND fecha_pago_parcial IS NULL) OR (codigo_razon_pago_parcial IS NOT NULL AND fecha_pago_parcial IS NOT NULL)) 
 ;
-CREATE UNIQUE INDEX reclamo__idxv1 ON
-    reclamo (
-        poliza_numero
-    ASC );
 
 ALTER TABLE reclamo ADD CONSTRAINT reclamo_pk PRIMARY KEY ( codigo );
 
