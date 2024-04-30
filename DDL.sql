@@ -83,7 +83,6 @@ ALTER TABLE persona_de_contacto ADD CONSTRAINT persona_de_contacto_pk PRIMARY KE
 CREATE TABLE poliza (
     numero           VARCHAR2(6 CHAR) NOT NULL,
     mensualidad      FLOAT(6) NOT NULL,
-    reclamo_codigo   VARCHAR2(5 CHAR) NOT NULL,
     cobertura_id     VARCHAR2(2 CHAR) NOT NULL,
     aseguradora_nit VARCHAR2(9 CHAR) NOT NULL
 );
@@ -174,10 +173,6 @@ ALTER TABLE paciente
 ALTER TABLE poliza
     ADD CONSTRAINT poliza_cobertura_fk FOREIGN KEY ( cobertura_id )
         REFERENCES cobertura ( id );
-
-ALTER TABLE poliza
-    ADD CONSTRAINT poliza_reclamo_fk FOREIGN KEY ( reclamo_codigo )
-        REFERENCES reclamo ( codigo );
 
 ALTER TABLE reclamo
     ADD CONSTRAINT reclamo_cita_fk FOREIGN KEY ( cita_id )
