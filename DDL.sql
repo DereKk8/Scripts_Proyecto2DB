@@ -83,11 +83,6 @@ CREATE TABLE persona_de_contacto (
     telefono        VARCHAR2(10 CHAR) NOT NULL
 );
 
-CREATE UNIQUE INDEX persona_de_contacto__idx ON
-    persona_de_contacto (
-        aseguradora_nit
-    ASC );
-
 ALTER TABLE persona_de_contacto ADD CONSTRAINT persona_de_contacto_pk PRIMARY KEY ( cedula );
 
 CREATE TABLE poliza (
