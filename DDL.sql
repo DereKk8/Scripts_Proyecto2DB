@@ -73,7 +73,7 @@ CREATE TABLE paciente (
     fecha_nacimiento     DATE NOT NULL,
     direccion            VARCHAR2(100 CHAR),
     representante_cedula VARCHAR2(10 CHAR) NOT NULL,
-    descripcion_parentesco VARCHAR2(20 CHAR), NOT NULL
+    descripcion_parentesco VARCHAR2(20 CHAR) NOT NULL
 );
 
 ALTER TABLE paciente ADD CONSTRAINT paciente_pk PRIMARY KEY ( cedula );
