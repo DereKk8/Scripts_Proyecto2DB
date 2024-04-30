@@ -1,3 +1,11 @@
-SELECT paciente.nombre as Nombre_Paciente, representante.nombre as Nombre_Representante, tipo_relacion
-FROM paciente, representante
-WHERE paciente.representante_cedula = representante.cedula OR paciente.representante_cedula = NULL    
+SELECT 
+    p.nombre AS Paciente,
+    r.nombre AS Representante,
+    CASE 
+        WHEN p.representante_cedula = r.cedula THEN r.tipo_relacion
+        ELSE 'No tiene relacion'
+    END AS Relacion
+FROM 
+    paciente p
+LEFT JOIN 
+    representante r ON p.representante_cedula = r.cedula
