@@ -80,8 +80,7 @@ ALTER TABLE paciente ADD CONSTRAINT paciente_pk PRIMARY KEY ( cedula );
 
 CREATE TABLE persona_de_contacto (
     cedula          VARCHAR2(10 CHAR) NOT NULL,
-    telefono        VARCHAR2(10 CHAR) NOT NULL,
-    aseguradora_nit VARCHAR2(9 CHAR) NOT NULL
+    telefono        VARCHAR2(10 CHAR) NOT NULL
 );
 
 CREATE UNIQUE INDEX persona_de_contacto__idx ON
@@ -181,10 +180,6 @@ ALTER TABLE motivo
 ALTER TABLE paciente
     ADD CONSTRAINT paciente_representante_fk FOREIGN KEY ( representante_cedula )
         REFERENCES representante ( cedula );
-
-ALTER TABLE persona_de_contacto
-    ADD CONSTRAINT persona_contac_aseg_fk FOREIGN KEY ( aseguradora_nit )
-        REFERENCES aseguradora ( nit );
 
 ALTER TABLE poliza
     ADD CONSTRAINT poliza_cobertura_fk FOREIGN KEY ( cobertura_id )
