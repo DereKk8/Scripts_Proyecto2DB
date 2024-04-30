@@ -11,8 +11,7 @@ CREATE TABLE aseguradora (
     nombre                     VARCHAR2(30 CHAR) NOT NULL,
     direccion                  VARCHAR2(50 CHAR) NOT NULL,
     direccion_ip               VARCHAR2(19 CHAR),
-    persona_de_contacto_cedula VARCHAR2(10 CHAR) NOT NULL,
-    poliza_numero              VARCHAR2(6 CHAR) NOT NULL
+    persona_de_contacto_cedula VARCHAR2(10 CHAR) NOT NULL
 );
 
 CREATE UNIQUE INDEX aseguradora__idxv1 ON
