@@ -33,10 +33,6 @@ CREATE TABLE cita (
     paciente_cedula         VARCHAR2(10 CHAR) NOT NULL
 );
 
-CREATE UNIQUE INDEX cita__idx ON
-    cita (
-        paciente_cedula
-    ASC );
 
 ALTER TABLE cita ADD CONSTRAINT cita_pk PRIMARY KEY ( id );
 
