@@ -8,6 +8,10 @@ VALUES ('2247654329', 'Roberto Pérez', '3176543210', 'Av. Principal 456', 'Padr
 INSERT INTO representante (cedula, nombre, telefono, direccion, tipo_relacion) 
 VALUES ('8864567890', 'Sofía López', '3174567890', 'Calle Secundaria 123', 'Madre');
 
+INSERT INTO representante (cedula, nombre, telefono, direccion, tipo_relacion) 
+VALUES ('7753678908', 'Lola Rivas', '3194557891', 'Calle Primaria 864', 'Hermana');
+
+
 -- #2
 -- Tabla paciente
 INSERT INTO paciente (cedula, nombre, sexo, fecha_nacimiento, direccion, representante_cedula) 
@@ -15,6 +19,9 @@ VALUES ('1234567890', 'Pedro Martínez', 'M',TO_DATE('1990-06-15','YYYY-MM-DD'),
 
 INSERT INTO paciente (cedula, nombre, sexo, fecha_nacimiento, direccion, representante_cedula) 
 VALUES ('0987654321', 'Ana López', 'F', TO_DATE('1985-04-20','YYYY-MM-DD'), 'Calle Secundaria 789', '8864567890');
+
+INSERT INTO paciente (cedula, nombre, sexo, fecha_nacimiento, direccion, representante_cedula) 
+VALUES ('3365685790', 'Jose Rivas', 'M',TO_DATE('2004-09-28','YYYY-MM-DD'), 'Av. Tercera 709', '7753678908' );
 
 INSERT INTO paciente (cedula, nombre, sexo, fecha_nacimiento, direccion, representante_cedula) 
 VALUES ('1234555790', 'Juan Quintana', 'M',TO_DATE('2000-07-20','YYYY-MM-DD'), 'Calle Principal 567', NULL);
@@ -98,4 +105,3 @@ VALUES ('RD001', TO_DATE('2024-05-20', 'YYYY-MM-DD'), 'Revisión de documentos',
 
 INSERT INTO reclamo_en_disputa (codigo, fecha_de_procesamiento, motivo, etapa, fecha_finalizacion, resultado_etapa, reclamo_codigo) 
 VALUES ('RD002', TO_DATE('2024-06-05', 'YYYY-MM-DD'), 'Análisis de reclamo', 2, TO_DATE('2024-06-15', 'YYYY-MM-DD'), 'Aprobado', 'R002');
-
