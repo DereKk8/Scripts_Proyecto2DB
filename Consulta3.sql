@@ -2,9 +2,9 @@ SELECT
     p.nombre AS Paciente,
     r.nombre AS Representante,
     CASE 
-        WHEN p.representante_cedula = r.cedula THEN r.tipo_relacion
+        WHEN p.representante_cedula = r.cedula THEN p.descripcion_parentesco
         ELSE 'No tiene relacion'
-    END AS Relacion
+    END AS Parentesco
 FROM 
     paciente p
 LEFT JOIN 
