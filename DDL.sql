@@ -11,15 +11,11 @@ CREATE TABLE aseguradora (
     nombre                     VARCHAR2(30 CHAR) NOT NULL,
     direccion                  VARCHAR2(50 CHAR) NOT NULL,
     direccion_ip               VARCHAR2(19 CHAR),
-    persona_de_contacto_cedula VARCHAR2(10 CHAR) NOT NULL
+    persona_de_contacto_cedula VARCHAR2(10 CHAR) NOT NULL,
+    poliza_numero              VARCHAR2(6 CHAR) NOT NULL
 );
 
 CREATE UNIQUE INDEX aseguradora__idxv1 ON
-    aseguradora (
-        persona_de_contacto_cedula
-    ASC );
-
-CREATE INDEX aseguradora_pers_cont_fk ON
     aseguradora (
         persona_de_contacto_cedula
     ASC );
@@ -92,11 +88,6 @@ CREATE UNIQUE INDEX persona_de_contacto__idx ON
         aseguradora_nit
     ASC );
 
-CREATE INDEX persona_contac_aseg_fk ON
-    persona_de_contacto (
-        aseguradora_nit
-    ASC );
-
 ALTER TABLE persona_de_contacto ADD CONSTRAINT persona_de_contacto_pk PRIMARY KEY ( cedula );
 
 CREATE TABLE poliza (
@@ -104,38 +95,8 @@ CREATE TABLE poliza (
     mensualidad      FLOAT(6) NOT NULL,
     reclamo_codigo   VARCHAR2(5 CHAR) NOT NULL,
     cobertura_id     VARCHAR2(2 CHAR) NOT NULL,
-    aseguradora_nit2 VARCHAR2(9 CHAR) NOT NULL
+    aseguradora_nit VARCHAR2(9 CHAR) NOT NULL
 );
-
-CREATE UNIQUE INDEX poliza__idxv1 ON
-    poliza (
-        reclamo_codigo
-    ASC );
-
-CREATE UNIQUE INDEX poliza__idxv2 ON
-    poliza (
-        cobertura_id
-    ASC );
-
-CREATE UNIQUE INDEX poliza__idx ON
-    poliza (
-        aseguradora_nit2
-    ASC );
-
-CREATE INDEX poliza_aseguradora_fk ON
-    poliza (
-        aseguradora_nit2
-    ASC );
-
-CREATE INDEX poliza_reclamo_fk ON
-    poliza (
-        reclamo_codigo
-    ASC );
-
-CREATE UNIQUE INDEX poliza__idxv5 ON
-    poliza (
-        aseguradora_nit2
-    ASC );
 
 ALTER TABLE poliza ADD CONSTRAINT poliza_pk PRIMARY KEY ( numero );
 
@@ -153,14 +114,9 @@ CREATE TABLE reclamo (
 );
 
 ALTER TABLE reclamo ADD constraint "chk pago parcial" 
-    CHECK ((codigo_razon_no_pago IS NULL AND fecha_pago_parcial IS NOT NULL) OR (codigo_razon_no_pago IS NOT NULL AND fecha_pago_parcial IS NULL)) 
+    CHECK ((codigo_razon_pago_parcial IS NULL AND fecha_pago_parcial IS NOT NULL) OR (codigo_razon_pago_parcial IS NOT NULL AND fecha_pago_parcial IS NULL)) 
 ;
 CREATE UNIQUE INDEX reclamo__idxv1 ON
-    reclamo (
-        poliza_numero
-    ASC );
-
-CREATE INDEX reclamo_poliza_fk ON
     reclamo (
         poliza_numero
     ASC );
@@ -230,10 +186,6 @@ ALTER TABLE persona_de_contacto
         REFERENCES aseguradora ( nit );
 
 ALTER TABLE poliza
-    ADD CONSTRAINT poliza_aseguradora_fk FOREIGN KEY ( aseguradora_nit2 )
-        REFERENCES aseguradora ( nit );
-
-ALTER TABLE poliza
     ADD CONSTRAINT poliza_cobertura_fk FOREIGN KEY ( cobertura_id )
         REFERENCES cobertura ( id );
 
@@ -256,4 +208,3 @@ ALTER TABLE reclamo
 ALTER TABLE titulo
     ADD CONSTRAINT titulo_miembro_personal_fk FOREIGN KEY ( miembro_personal_cedula )
         REFERENCES miembro_personal ( cedula );
-
